@@ -1,0 +1,3 @@
+validatedemo\controller\CommentController.class
+validatedemo\aop\ValidateHandelAspect.class
+validatedemo\aop\ValidateEntry.class

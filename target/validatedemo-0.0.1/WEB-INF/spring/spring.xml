@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+<!-- 	<resources mapping="/resources/**" location="/resources/" /> -->
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+<!-- 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean> -->
+	
+		<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+    <beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    <beans:property name="cacheSeconds" value="0"></beans:property>
+    </beans:bean>
+
+	<beans:bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<!-- 设置为true以忽略对Accept Header的支持 -->
+		<beans:property name="ignoreAcceptHeader" value="true" />
+		<!-- 在没有扩展名时即: "/user/1" 时的默认展现形式 -->
+		<beans:property name="defaultContentType" value="application/json" />
+
+		<!-- 扩展名至mimeType的映射,即 /user.json => application/json -->
+		<beans:property name="mediaTypes">
+			<beans:map>
+				<beans:entry key="json" value="application/json" />
+				<beans:entry key="xml" value="application/xml" />
+			</beans:map>
+		</beans:property>
+		<beans:property name="favorParameter" value="true"/>
+        <beans:property name="viewResolvers">
+            <beans:list>
+                <beans:bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+                <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+                    <beans:property name="prefix" value="/WEB-INF/views"/>
+                    <beans:property name="suffix" value=".jsp"></beans:property>
+                </beans:bean>
+            </beans:list>
+        </beans:property>
+		<beans:property name="defaultViews">
+            <beans:list>
+                <!-- for application/json -->
+                <beans:bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
+                
+            </beans:list>
+        </beans:property>
+	</beans:bean>
+	
+	
+	
+	
+	<!-- <beans:bean id="simpleMappingExceptionResolver" class="com.journaldev.spring.resolver.MySimpleMappingExceptionResolver">
+		<beans:property name="exceptionMappings">
+			<beans:map>
+				<beans:entry key="Exception" value="generic_error"></beans:entry>
+			</beans:map>
+		</beans:property>
+		<beans:property name="defaultErrorView" value="generic_error"/>
+	</beans:bean> -->
+	
+		<!-- bind your messages.properties -->
+	<beans:bean class="org.springframework.context.support.ResourceBundleMessageSource"
+		id="messageSource">
+		<beans:property name="defaultEncoding" value="utf-8" />
+		<beans:property name="basenames">
+			<beans:list>
+				<beans:value>messages</beans:value>
+			</beans:list>
+		</beans:property>  
+	</beans:bean>
+	
+	<beans:bean id="messageSourceHelper" class="validatedemo.util.MessageSourceHelper">
+		<beans:property name="messageSource">
+			<beans:ref bean="messageSource" />
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="errorHelper" class="validatedemo.util.ErrorHelper"/>
+	
+	<!-- Aspect -->
+	<beans:bean id="validatorAspect" class="validatedemo.aop.ValidateHandelAspect" >
+	</beans:bean>
+	
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	<beans:bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jsonMessageConverter"/>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<beans:bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</beans:bean>
+	
+	<context:component-scan base-package="validatedemo" />
+	<beans:bean class="validatedemo.util.ApplicationContextUtils" />	
+</beans:beans>

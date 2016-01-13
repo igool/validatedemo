@@ -1,0 +1,16 @@
+-1.6
+-encoding
+UTF-8
+-showWeaveInfo
+-source
+1.6
+-target
+1.6
+-verbose
+-classpath
+E:\localrepo\com\fasterxml\jackson\core\jackson-databind\2.2.3\jackson-databind-2.2.3.jar;E:\localrepo\org\springframework\spring-context\4.0.2.RELEASE\spring-context-4.0.2.RELEASE.jar;E:\localrepo\org\springframework\spring-webmvc\4.0.2.RELEASE\spring-webmvc-4.0.2.RELEASE.jar;E:\localrepo\org\springframework\spring-web\4.0.2.RELEASE\spring-web-4.0.2.RELEASE.jar;E:\localrepo\org\springframework\spring-aspects\4.0.2.RELEASE\spring-aspects-4.0.2.RELEASE.jar;E:\localrepo\cglib\cglib\3.0\cglib-3.0.jar;E:\localrepo\org\aspectj\aspectjrt\1.8.2\aspectjrt-1.8.2.jar;E:\localrepo\org\aspectj\aspectjweaver\1.8.2\aspectjweaver-1.8.2.jar;E:\localrepo\org\aspectj\aspectjtools\1.8.2\aspectjtools-1.8.2.jar;E:\localrepo\org\slf4j\slf4j-api\1.7.5\slf4j-api-1.7.5.jar;E:\localrepo\org\slf4j\jcl-over-slf4j\1.7.5\jcl-over-slf4j-1.7.5.jar;E:\localrepo\org\slf4j\slf4j-log4j12\1.7.5\slf4j-log4j12-1.7.5.jar;E:\localrepo\log4j\log4j\1.2.15\log4j-1.2.15.jar;E:\localrepo\javax\inject\javax.inject\1\javax.inject-1.jar;E:\localrepo\javax\servlet\servlet-api\2.5\servlet-api-2.5.jar;E:\localrepo\javax\servlet\jsp\jsp-api\2.1\jsp-api-2.1.jar;E:\localrepo\javax\servlet\jstl\1.2\jstl-1.2.jar;E:\localrepo\commons-lang\commons-lang\2.6\commons-lang-2.6.jar;E:\localrepo\org\projectlombok\lombok\1.16.6\lombok-1.16.6.jar;E:\localrepo\javax\validation\validation-api\1.0.0.GA\validation-api-1.0.0.GA.jar;E:\localrepo\org\hibernate\hibernate-validator\4.1.0.Final\hibernate-validator-4.1.0.Final.jar;E:\localrepo\com\igool\lombakcode\lombakcode\0.0.1\lombakcode-0.0.1.jar;E:\localrepo\junit\junit\4.7\junit-4.7.jar;E:\localrepo\com\fasterxml\jackson\core\jackson-annotations\2.2.3\jackson-annotations-2.2.3.jar;E:\localrepo\com\fasterxml\jackson\core\jackson-core\2.2.3\jackson-core-2.2.3.jar;E:\localrepo\org\springframework\spring-aop\4.0.2.RELEASE\spring-aop-4.0.2.RELEASE.jar;E:\localrepo\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;E:\localrepo\org\springframework\spring-beans\4.0.2.RELEASE\spring-beans-4.0.2.RELEASE.jar;E:\localrepo\org\springframework\spring-core\4.0.2.RELEASE\spring-core-4.0.2.RELEASE.jar;E:\localrepo\org\springframework\spring-expression\4.0.2.RELEASE\spring-expression-4.0.2.RELEASE.jar;E:\localrepo\org\ow2\asm\asm\4.0\asm-4.0.jar;E:\working\validatedemo\target\classes
+-d
+E:\working\validatedemo\target\classes
+E:\working\validatedemo\src\main\java\validatedemo\aop\ValidateEntry.java
+E:\working\validatedemo\src\main\java\validatedemo\aop\ValidateHandelAspect.java
+E:\working\validatedemo\src\main\java\validatedemo\controller\CommentController.java
